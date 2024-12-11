@@ -194,10 +194,16 @@ class Game():
                     if int(ele[1]) > int(tele[1]) and tele[0] == ele[0]:
                         self.ScoreList.remove(tele)
         self.Top10 = [["Name","Score","Rank"]]
-        for i in range(10):
-            temp = self.ScoreList[i]
-            temp.append(i+1)
-            self.Top10.append(temp)
+        if len(self.ScoreList)<10:
+            for i in range(len(self.ScoreList)):
+                temp = self.ScoreList[i]
+                temp.append(i+1)
+                self.Top10.append(temp)
+        else:
+            for i in range(10):
+                temp = self.ScoreList[i]
+                temp.append(i+1)
+                self.Top10.append(temp)
 
     def show_score(self):
         self.display_surface.blit(self.scoreDis)
